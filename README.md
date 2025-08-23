@@ -13,6 +13,15 @@ Cuando se alcance el largo minimo en el servidor de HTTP, los servidores comenza
 
 Aclaraciones:
 Los archivos clientes.py solo contienen sus respectivas clases con sus funciones que son llamadas por el main.py
+Solo se admiten palabras en minusculas y mayusculas, sin caracteres especiales o espacios.
+
+Algoritmo:
+El main inicia con pedir el largo minimo y palabra inicial para comenzar, se llama primero al cliente 1 (TCP) para pedir una palabra extra y este se envia al servidor 2 (TCP).
+Luego el servidor lo envia mediante UDP??? al Cliente UDP para nuevamente pedir una palabra extra al mensaje. Este cliente envia mediante UDP al servidor 3 (UDP).
+El servidor 3 envia el mensaje al Cliente HTTP el cual pide una palabra nueva para el mensaje. Luego este lo envia al servidor 4 (HTTP)
+El servidor 4 compara los largos, sucediendo dos casos:
+Si el largo minimo es superado, entonces al Cliente 4 (TCP) le envia la palabra "Close" el cual hara que inicie una cadena de apagado para los servidores.
+Si el largo minimo no es superado, entonces al Cliente 4 le envia el mensaje que contiene para luego pedir una palabra extra y volver a empezar el loop en el cliente 1 (TCP).
 
 Bibliografia:
 https://www.codementor.io/@joaojonesventura/building-a-basic-http-server-from-scratch-in-python-1cedkg0842 Tutorial de HTTP
